@@ -52,8 +52,8 @@ class Uploader
                 $fileTmpPath  = $item->getPathname();
                 $fileSize     = round($item->getClientSize() / 1048576, 2);
                 $fileMimeType = $item->getClientMimeType();
-                $newFileName  = ($this->random_name ? (Str::random(8) . '-' . Str::random(8) . '-') : '') . $item->getClientOriginalName();
-                $newFileName  = str_replace(' ', $this->delimiter, $newFileName);
+                $newFileName  = ($this->random_name ? (Str::random(8) . $this->delimiter . Str::random(8) . $this->delimiter) : '') . $item->getClientOriginalName();
+                $newFileName  = str_replace([' ', '+', '-', '_'], $this->delimiter, $newFileName);
 
                 $this->validateMimeType($fileMimeType);
                 $this->validateFileSize($fileSize);

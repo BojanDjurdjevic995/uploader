@@ -19,9 +19,23 @@ In the php file, first instantiate the Uploader class
 ```
 $file = new Uploader($request, 'your_name_input'); // $request must be instance of Illuminate\Http\Request
 ```
-There are 2 optional arguments in this class. delimiter and random name.
+There are 2 optional arguments in this class. Delimiter and random name.
+
 Delimiter means that all spaces will be replaced with that argument. The default is '-'.
+
 Random name (bool) represents whether the file name will have random characters. The default is 0.
+##### Exaple:
+```
+$file = new Uploader($request, 'your_name_input', '_', 1);
+For multiple files on save it return like
+[
+    "SlReKKT0_xSMByfiU_josh_wilburne_147469_unsplash.jpg",
+    "H8rBfHmB_0UE4bag3_photo_1537411809_5959db7f925d.jpg",
+    "hEX1J3dy_x7UleULw_photo_1537408621655_3034354224c4.jpg"
+]
+-------------------------------------------------------------------------------------
+For single file on save it return like "SlReKKT0_xSMByfiU_josh_wilburne_147469_unsplash.jpg"
+```
 
 Next set the allowed mime types for file [OPTIONAL] (e.g. for image)
 ```
