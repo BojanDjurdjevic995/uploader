@@ -20,10 +20,7 @@ class Uploader
     public function setMimeType()
     {
         foreach (func_get_args() as $arg)
-            if (Str::contains($arg, '/'))
-                $this->mimeType[] = $arg;
-            else throw new \Exception('The mime type must contain "/". Eg. type/extension (video/mp4, image/jpg)');
-
+            $this->mimeType[] = $arg;
     }
 
     public function setFileMaxSize($size)
