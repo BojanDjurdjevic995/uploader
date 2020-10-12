@@ -55,5 +55,15 @@ On finish call method save for save image on path. This method return the name o
 ```
 $file->save();
 ```
-##### This method for single file return name of file (e.g. josh-wilburne-147469-unsplash.jpg)
-##### This method for multiple files return array of names for file (e.g. ['josh-wilburne-147469-unsplash.jpg', 'garin-chadwick-sLxQaYfnD20-unsplash.jpg', 'chewy-8S0cSJ1Dy9Q-unsplash.jpg'])
+##### This method for single file return like
+```
+    "josh-wilburne-147469-unsplash.jpg"
+```
+##### This method for multiple files return like 
+```
+[
+    "josh-wilburne-147469-unsplash.jpg",
+    "garin-chadwick-sLxQaYfnD20-unsplash.jpg",
+    "chewy-8S0cSJ1Dy9Q-unsplash.jpg"
+]
+``` 
