@@ -40,6 +40,8 @@ For single file on save it return like "SlReKKT0_xSMByfiU_josh_wilburne_147469_u
 Next set the allowed mime types for file [OPTIONAL] (e.g. for image)
 ```
 $file->setMimeType('image/png', 'image/jpg', 'image/jpeg');
+or
+$file->setMimeType('image'); // All type of image pass the validation
 ```
 If you do not call this method, you can upload any file. Then there is no validation for the file type
 Next set the file max size for upload (The number is in megabytes)
