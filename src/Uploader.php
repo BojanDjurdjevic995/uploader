@@ -11,10 +11,10 @@ class Uploader
     protected $request, $file, $mimeType, $save_path, $random_name, $size, $delimiter;
     public function __construct(Request $request, $file, $delimiter = '-', $random_name = false)
     {
-        $this->request = $request;
-        $this->file = $file;
-        $this->random_name = $random_name;
-        $this->delimiter = $delimiter;
+        $this->request      = $request;
+        $this->file         = $file;
+        $this->random_name  = $random_name;
+        $this->delimiter    = $delimiter;
     }
 
     public function setMimeType()
