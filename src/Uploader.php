@@ -50,7 +50,8 @@ class Uploader
             foreach ($request_file as $item)
             {
                 $fileTmpPath  = $item->getPathname();
-                $fileSize     = round($item->getClientSize() / 1048576, 2);
+                $fileSize     = method_exists($item, 'getClientSize') ? $item->getClientSize() : filesize($item->getPathname());
+                $fileSize     = round($fileSize / 1048576, 2);
                 $fileMimeType = $item->getClientMimeType();
                 $newFileName  = ($this->random_name ? (Str::random(8) . $this->delimiter . Str::random(8) . $this->delimiter) : '') . $item->getClientOriginalName();
                 $newFileName  = str_replace([' ', '+', '-', '_'], $this->delimiter, $newFileName);
