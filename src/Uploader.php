@@ -79,9 +79,18 @@ class Uploader
 
     protected function validateMimeType($fileMimeType)
     {
-        if (empty($this->mimeType) || in_array($fileMimeType, $this->mimeType))
+        if (empty($this->mimeType) || in_array($fileMimeType, $this->mimeType) || $this->isMimeTypeInArray($fileMimeType))
             return true;
         throw new \Exception('File must be type: ' . implode(' or ', $this->mimeType));
+    }
+
+    protected function isMimeTypeInArray($fileMimeType)
+    {
+        $contains = false;
+        foreach ($this->mimeType as $value)
+            if (Str::contains($fileMimeType, $value))
+                $contains = true;
+        return $contains;
     }
 
     protected function validateFileSize($fileSize)
