@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class Uploader
 {
-    protected $request, $file, $mimeType, $save_path, $random_name, $size;
+    protected $request, $file, $mimeType, $save_path, $random_name, $size, $delimiter;
     public function __construct(Request $request, $file, $delimiter = '-', $random_name = false)
     {
         $this->request = $request;
