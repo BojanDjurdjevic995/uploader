@@ -9,11 +9,12 @@ use Illuminate\Support\Str;
 class Uploader
 {
     protected $request, $file, $mimeType, $save_path, $random_name, $size;
-    public function __construct(Request $request, $file, $random_name = false)
+    public function __construct(Request $request, $file, $delimiter = '-', $random_name = false)
     {
         $this->request = $request;
         $this->file = $file;
         $this->random_name = $random_name;
+        $this->delimiter = $delimiter;
     }
 
     public function setMimeType()
@@ -48,10 +49,11 @@ class Uploader
 
             foreach ($request_file as $item)
             {
-                $fileTmpPath = $item->getPathname();
-                $fileSize = round($item->getClientSize() / 1048576, 2);
+                $fileTmpPath  = $item->getPathname();
+                $fileSize     = round($item->getClientSize() / 1048576, 2);
                 $fileMimeType = $item->getClientMimeType();
-                $newFileName = ($this->random_name ? (Str::random(8) . '-' . Str::random(8) . '-') : '') . $item->getClientOriginalName();
+                $newFileName  = ($this->random_name ? (Str::random(8) . '-' . Str::random(8) . '-') : '') . $item->getClientOriginalName();
+                $newFileName  = str_replace(' ', $this->delimiter, $newFileName);
 
                 $this->validateMimeType($fileMimeType);
                 $this->validateFileSize($fileSize);
