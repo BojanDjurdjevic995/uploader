@@ -17,7 +17,7 @@ class Uploader extends Validator
         $this->file         = $file;
         $this->random_name  = $random_name;
         $this->delimiter    = str_replace(['/', '\\', '.', ',', ';', ':'], '-', $delimiter);
-    }s
+    }
 
     public function setMimeType()
     {
