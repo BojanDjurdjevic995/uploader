@@ -11,11 +11,13 @@ class Uploader extends Validator
     protected $request, $file, $mimeType, $save_path, $random_name, $size, $delimiter;
     public function __construct(Request $request, $file, $delimiter = '-', $random_name = false)
     {
+        if (gettype($random_name) != 'boolean') throw new \Exception('Parameter "random_name" must be type boolean [true/false]');
+        if (strlen($delimiter) > 1) throw new \Exception('Parameter "delimiter" must be single chart');
         $this->request      = $request;
         $this->file         = $file;
         $this->random_name  = $random_name;
         $this->delimiter    = str_replace(['/', '\\', '.', ',', ';', ':'], '-', $delimiter);
-    }
+    }s
 
     public function setMimeType()
     {
